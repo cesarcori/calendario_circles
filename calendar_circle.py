@@ -10,11 +10,9 @@ from reportlab.platypus import Table, TableStyle
 def draw_calendar_circle():
     doc = canvas.Canvas("calendar_circle.pdf")
 
-    radio = 10
     # create a function to generate an x and y to put on the paper
 
-    # linear
-    
+    # linear funtion
     escala = 20
     linear_function = {}
     for n in range(1,10):
@@ -22,8 +20,19 @@ def draw_calendar_circle():
         x = n
         y = 3*x
         linear_function[x] = y
+
+    # draw
+    radio = 4
+    escala = 11
+    linear = {}
+    for m in range(1, 5):
+        for n in range(1, 54):
+            n = n * escala
+            x = n
+            y = 100*m
+            linear[x] = y
     
-    dicc = linear_function
+    dicc = linear
     print(dicc)
     
     for x, y in dicc.items():
