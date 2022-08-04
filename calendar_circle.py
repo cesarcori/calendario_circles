@@ -1,11 +1,7 @@
 #!/usr/bin/env python3 
 
-from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
-from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
-
-from reportlab.platypus import Table, TableStyle
 
 def draw_calendar_circle():
     doc = canvas.Canvas("calendar_circle.pdf")
@@ -24,19 +20,23 @@ def draw_calendar_circle():
     # draw
     radio = 4
     escala = 11
-    linear = {}
-    for m in range(1, 5):
+    linear = []
+    for m in range(1, 8):
         for n in range(1, 54):
             n = n * escala
             x = n
-            y = 100*m
-            linear[x] = y
+            y = m * escala
+            linear.append([x,y])
     
-    dicc = linear
-    print(dicc)
+    array = linear
+    print(array)
     
-    for x, y in dicc.items():
-        doc.circle(x, y, radio)
+    for center in array:
+        doc.circle(center[0],center[1], radio)
+
+    # put days to calendar and months
+    # put color to difference.
+    # thinking in another way to draw circles is through grids.
 
     doc.save()
 
