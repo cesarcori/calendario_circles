@@ -13,7 +13,18 @@ def draw_calendar_circle():
     radio = 10
     # create a function to generate an x and y to put on the paper
 
-    dicc = {10:20, 30:40, 50:60}
+    # linear
+    
+    escala = 20
+    linear_function = {}
+    for n in range(1,10):
+        n = n * escala
+        x = n
+        y = 3*x
+        linear_function[x] = y
+    
+    dicc = linear_function
+    print(dicc)
     
     for x, y in dicc.items():
         doc.circle(x, y, radio)
